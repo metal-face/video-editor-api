@@ -1,0 +1,4 @@
+.env*
+.pre-commit-config.yaml
+*.example
+target/
