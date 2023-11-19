@@ -11,6 +11,5 @@ async fn main() -> Result<(), rocket::Error> {
         .mount("/hello", routes![world])
         .launch()
         .await?;
-
     Ok(())
 }
