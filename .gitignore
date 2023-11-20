@@ -17,3 +17,4 @@ debug/
 *.pdb.idea
 /src/.env
 /.idea
+.env
