@@ -1,0 +1,33 @@
+name: video-editor-api
+services:
+  app:
+    image: video-editor-api:latest
+    ports: 10000:${APP_PORT}
+    build:
+      context: app
+      target: development
+    environment:
+      - APP_ENV=${APP_ENV}
+      - APP_HOST=${APP_HOST}
+      - APP_PORT=${APP_PORT}
+      - APP_COMPONENT=${APP_COMPONENT}
+      - DB_DRIVER=${DB_DRIVER}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - SERVICE_READINESS_TIMEOUT=${SERVICE_READINESS_TIMEOUT}
+    volumes:
+      - ./mount:/srv/root
+      - ./scripts:/scripts
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 6000:5432
