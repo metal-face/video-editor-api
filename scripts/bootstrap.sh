@@ -6,7 +6,7 @@ if [ -z "$APP_ENV" ]; then
     exit 1
 fi
 
-if [-z "$APP_COMPONENT"]; then
+if [ -z "$APP_COMPONENT" ]; then
     echo "Please set APP_COMPONENT"
     exit 1
 fi
