@@ -1,11 +1,17 @@
 name: video-editor-api
 services:
+  postgres:
+      image: postgres:latest
+      environment:
+        POSTGRES_PASSWORD: ${DB_PASS}
+      volumes:
+        - ./pgdata:/var/lib/postgresql/data
+      ports:
+        - 6000:5432
   app:
     image: video-editor-api:latest
-    ports: 10000:${APP_PORT}
-    build:
-      context: app
-      target: development
+    ports:
+      - 10000:${APP_PORT}
     environment:
       - APP_ENV=${APP_ENV}
       - APP_HOST=${APP_HOST}
@@ -23,11 +29,3 @@ services:
       - ./scripts:/scripts
     depends_on:
       - postgres
-  postgres:
-    image: postgres:latest
-    environment:
-      POSTGRES_PASSWORD: ${DB_PASS}
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
-    ports:
-      - 6000:5432
