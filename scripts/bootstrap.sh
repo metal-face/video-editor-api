@@ -6,6 +6,8 @@ if [ -z "$APP_ENV" ]; then
     exit 1
 fi
 
+cd /srv/root
+
 if [ -z "$APP_COMPONENT" ]; then
     echo "Please set APP_COMPONENT"
     exit 1
@@ -13,6 +15,8 @@ fi
 
 # await database availability
 /scripts/await-service.sh $DATABASE_HOST $DATABASE_PORT $SERVICE_READINESS_TIMEOUT
+
+/scripts/init-db.sh
 
 # run the service
 /usr/localbin/video-editor-api
