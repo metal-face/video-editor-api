@@ -26,7 +26,6 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - SERVICE_READINESS_TIMEOUT=${SERVICE_READINESS_TIMEOUT}
     volumes:
-      - ./mount:/srv/root
       - ./scripts:/scripts
     depends_on:
       - postgres
