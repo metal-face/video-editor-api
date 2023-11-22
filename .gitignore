@@ -18,3 +18,4 @@ debug/
 /src/.env
 /.idea
 .env
+/pgdata
