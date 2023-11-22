@@ -18,5 +18,10 @@ fi
 
 /scripts/init-db.sh
 
+#  TODO: run migrations
+diesel migration run
+
+cargo run
+
 # run the service
-/usr/localbin/video-editor-api
+# /usr/localbin/video-editor-api
