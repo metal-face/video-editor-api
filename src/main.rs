@@ -1,9 +1,7 @@
 #[macro_use] extern crate rocket;
 
-#[get("/world")]
-fn world() -> &'static str {
-    "Hello, world!"
-}
+mod controllers;
+use crate::controllers::authentication::world;
 
 #[rocket::main]
 async fn main() -> Result<(), rocket::Error> {
